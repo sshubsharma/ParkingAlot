@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Parking System</title>
+<script type="text/javascript"
+	src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.3/angular.min.js"></script>
+<script type="text/javascript"
+	src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.3/angular-resource.js"></script>
+<script type="text/javascript" src="app/app.js"></script>
+<script type="text/javascript" src="app/general.controller.js"></script>
+<script type="text/javascript" src="app/employee.service.js"></script>
+
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+<!-- Latest compiled and minified CSS -->
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
+<!-- Optional theme -->
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css">
+
+<!-- Latest compiled and minified JavaScript -->
+<script
+	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</head>
+<body ng-app="crudApp" ng-controller="GeneralController">
+
+	
+
+	<div class="panel panel-default">
+		<div class="panel-heading">Parking Summary</div>
+		<div class="panel-body">
+			<form class="col-md-4" ng-submit="saveParking()">
+				<div class="form-group">
+					<label for="vechileNo">Vechile Number</label> <input type="text"
+						ng-model="parkingLot.vechileNo" class="form-control" id="vechileNo"
+						placeholder="Employee NamevechileNo">
+				</div>
+				<div class="form-group">
+					<label for="duration">Duration</label> <input type="text"
+						ng-model="parkingLot.duration" class="form-control"
+						id="duration" placeholder="duration">
+				</div>
+
+				<div class="form-group">
+					<label for="amount">Amount</label> 
+					<input type="text"
+						ng-model="parkingLot.amount" class="form-control"
+						id="amount" placeholder="amount">
+				</div>
+
+				<button type="submit" class="btn btn-default">{{buttonText}}</button>
+				
+			</form>
+
+			<div class="table-responsive col-md-6">
+				<table class="table table-striped">
+					<tr>
+						<th>Vechile Number</th>
+						<th>Duration</th>
+						<th>Amount</th>
+						<th></th>
+					</tr>
+					<tr ng-repeat="employee in employees">
+						<td>{{parkingLot.vechileNo}}</td>
+						<td>{{parkingLot.duration}}</td>
+						<td>{{parkingLot.amount}}</td>
+						<td>
+							<button type="button" class="btn btn-default"
+								ng-click="updatParking(parkingLot)">
+								<span class="glyphicon glyphicon-edit" aria-hidden="true"></span>
+							</button>
+							<button type="button" class="btn btn-default"
+								ng-click="deleteParking(parkingLot)">
+								<span class="glyphicon glyphicon-remove-circle"
+									aria-hidden="true"></span>
+							</button>
+						</td>
+					</tr>
+				</table>
+			</div>
+		</div>
+	</div>
+
+</body>
+</html>
